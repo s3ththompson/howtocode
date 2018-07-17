@@ -1,6 +1,6 @@
 # 1: Hypertext
 
-Resources for the first class on HTML.
+Resources for the first class on HTML. See [class notes](https://howtocode.club/hypertext) for more information
 
 ## Instructions
 
