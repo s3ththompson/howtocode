@@ -1,0 +1,100 @@
+html {
+  /* see https://css-tricks.com/snippets/css/system-font-stack/
+  using system fonts ensures the user sees a modern sans serif,
+  without the browser having to download a custom font */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.2; /* unitless, for maximum flexibility */
+   /* from here on out, length values are set in rem units,
+  or units equal to the font-size of the root element,
+  in this case 14px */
+  letter-spacing: 0.04rem;
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  margin-bottom: 1.2rem;
+}
+
+a {
+   /* inherit causes the element to take the value from its parent */
+   /* in this case, this overwrites the browser's default blue color,
+   replacing it with whatever color our body text is set to */
+  color: inherit;
+}
+
+.bio, .details {
+  padding: 1rem;
+}
+
+.images {
+  height: 40vh;
+  /* this sets .images to be a flex container and all children to be
+  flex items. since the default flex item behavior is a row, we don't
+  need any additional styles. see more at https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+  display: flex;
+  overflow-y: scroll; /* this prevents the images from extending off the page */
+}
+
+.images img {
+  max-height: 100%;
+  /* in general, you want to specify either width OR height for images to preserve 
+  aspect ratio */
+  width: auto;
+  cursor: zoom-in;
+}
+
+.images:hover img {
+  opacity: 0.5;
+}
+
+.images img:hover {
+  opacity: 1;
+}
+
+table {
+  width: 100%;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.8); /* note the alpha channel */
+   /* position fixed removes the element from document flow and positions
+   it relative to the viewport.*/
+  position: fixed;
+  /* top, bottom, right, and left specify offset from the edges of the
+  viewport for a fixed postioned element. this effectively creates a 
+  "fullscreen" div that sits in front of all of our previous content */
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  cursor: zoom-out;
+  /* the overlay will be display flex (see .show class below). we only have one
+  flex item (child), the image in the overlay. these two rules make the flex item
+  vertically and horizontally centered in the flex container. */
+  justify-content: center;
+  align-items: center;
+  display: none; /* we want the overlay to be hidden until we add the show class below */
+}
+
+.overlay.show {
+  display: flex; /* this overwrites display none and effectively "shows" the overlay */
+}
+
+.overlay img {
+  max-height: 100%;
+  width: auto;
+}
+
+/* these rules are non-standard CSS rules which means they don't work in 
+all browsers. however, they are a quick way to hide the scrollbar on chrome */
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* make scrollbar invisible */
+}
+::-webkit-scrollbar-thumb {  }
+
+
