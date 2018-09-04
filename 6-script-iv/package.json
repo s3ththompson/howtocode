@@ -1,0 +1,16 @@
+{
+  "name": "5-script-iii",
+  "version": "1.0.0",
+  "description": "Resources for the class on CSS. See [class notes](https://howtocode.club/style) for more information",
+  "main": "index.js",
+  "dependencies": {
+    "budo": "^11.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "budo --live",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
