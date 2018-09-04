@@ -25,88 +25,88 @@ const flags = [
   {"name": "X-ray", "color": "blue"},
   {"name": "Yankee", "color": "red"},
   {"name": "Zulu", "color": "white"}
-]
+];
 
 class Slideshow {
   constructor(slides) {
-    this.currentSlide = 10
-    this.slides = slides
+    this.currentSlide = 10;
+    this.slides = slides;
   }
   forward() {
-    this.currentSlide = this.currentSlide = this.currentSlide + 1
+    this.currentSlide = this.currentSlide = this.currentSlide + 1;
     if (this.currentSlide > this.slides.length - 1) {
-      this.currentSlide = 0
+      this.currentSlide = 0;
     }
   }
   back() {
-    this.currentSlide = this.currentSlide - 1
+    this.currentSlide = this.currentSlide - 1;
     if (this.currentSlide < 0) {
-      this.currentSlide = this.slides.length - 1
+      this.currentSlide = this.slides.length - 1;
     }
   }
   shuffle() {
-    shuffle(this.slides)
+    shuffle(this.slides);
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  let slideshow = new Slideshow(flags)
-  let forwardButton = document.querySelector('#forward')
-  let backButton = document.querySelector('#back')
-  let shuffleButton = document.querySelector('#shuffle')
+  let slideshow = new Slideshow(flags);
+  let forwardButton = document.querySelector('#forward');
+  let backButton = document.querySelector('#back');
+  let shuffleButton = document.querySelector('#shuffle');
   forwardButton.addEventListener('click', function() {
-    slideshow.forward()
-    updatePage(slideshow.currentSlide)
-  })
+    slideshow.forward();
+    updatePage(slideshow.currentSlide);
+  });
   backButton.addEventListener('click', function() {
-    slideshow.back()
-    updatePage(slideshow.currentSlide)
-  })
+    slideshow.back();
+    updatePage(slideshow.currentSlide);
+  });
   shuffleButton.addEventListener('click', function () {
-    slideshow.shuffle()
-    updatePage(slideshow.currentSlide)
-  })
+    slideshow.shuffle();
+    updatePage(slideshow.currentSlide);
+  });
 });
 
 function updatePage(currentSlide) {
-  console.log(currentSlide)
-  let img = document.querySelector('img')
-  img.src = getImageFromIndex(currentSlide)
-  document.body.style.background = getColorFromIndex(currentSlide)
-  let html = document.querySelector('html')
-  html.style.color = getSecondaryFromIndex(currentSlide)
-  img.style.borderColor = getSecondaryFromIndex(currentSlide)
+  console.log(currentSlide);
+  let img = document.querySelector('img');
+  img.src = getImageFromIndex(currentSlide);
+  document.body.style.background = getColorFromIndex(currentSlide);
+  let html = document.querySelector('html');
+  html.style.color = getSecondaryFromIndex(currentSlide);
+  img.style.borderColor = getSecondaryFromIndex(currentSlide);
 }
 
 function getImageFromIndex(i) {
-  return `/assets/ICS_${flags[i].name}.svg.png`
+  return `/assets/ICS_${flags[i].name}.svg.png`;
 }
 
 function getColorFromIndex(i) {
-  return flags[i].color
+  return flags[i].color;
 }
 
 function getSecondaryFromIndex(i) {
-  let color = flags[i].color
-  let secondary
+  let color = flags[i].color;
+  let secondary;
   switch(color) {
     case 'red':
-      secondary = 'white'
+      secondary = 'white';
       break;
     case 'white':
-      secondary = 'black'
+      secondary = 'black';
       break;
     case 'blue':
-      secondary = 'white'
+      secondary = 'white';
       break;
     case 'yellow':
-      secondary = 'black'
+      secondary = 'black';
       break;
     case 'black':
-      secondary = 'white'
+      secondary = 'white';
       break;
   }
-  return secondary
+  return secondary;
 }
 
 function shuffle(a) {
